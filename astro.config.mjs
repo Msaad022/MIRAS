@@ -8,6 +8,6 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
     site: 'https://Msaad022.github.io',
-    base: '/miras',
+    base: '/MIRAS',
   }
 });
