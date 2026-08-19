@@ -1,0 +1,163 @@
+<section id="contact" class="py-16 sm:py-20 bg-gray-50 dark:bg-gray-900">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <h2
+      class="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-3 sm:mb-4"
+    >
+      احجز معاينة مجانية
+    </h2>
+    <p
+      class="text-center text-gray-500 dark:text-gray-400 mb-10 sm:mb-12 text-sm sm:text-base"
+    >
+      تواصل معنا وسنقوم بزيارتك لتقديم أفضل الحلول
+    </p>
+
+    <div class="grid md:grid-cols-3 gap-8 sm:gap-10">
+      <form
+        id="inspection-form"
+        class="md:col-span-2 bg-white dark:bg-gray-800 rounded-2xl p-6 sm:p-8 shadow-sm space-y-5"
+      >
+        <div>
+          <label for="name" class="block text-sm font-medium mb-1">الاسم</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            required
+            placeholder="اسمك الكامل"
+            class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-transparent focus:ring-2 focus:ring-accent focus:border-accent outline-none transition text-sm sm:text-base"
+          />
+        </div>
+        <div>
+          <label for="phone" class="block text-sm font-medium mb-1"
+            >رقم الهاتف <span class="text-red-500">*</span></label
+          >
+          <input
+            type="tel"
+            id="phone"
+            name="phone"
+            required
+            placeholder="01xxxxxxxxx"
+            pattern="[0-9]{10,15}"
+            dir="ltr"
+            class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-transparent focus:ring-2 focus:ring-accent focus:border-accent outline-none transition text-sm sm:text-base text-end"
+          />
+        </div>
+        <div>
+          <label class="block text-sm font-medium mb-2">أفضل وقت للتواصل</label>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            {
+              [
+                "صباحاً (8ص - 12ظ)",
+                "ظهراً (12ظ - 3م)",
+                "عصراً (3م - 6م)",
+                "مساءً (6م - 10م)",
+              ].map((time) => (
+                <label class="flex items-center gap-2 cursor-pointer text-sm">
+                  <input
+                    type="checkbox"
+                    name="preferred_time"
+                    value={time}
+                    class="w-4 h-4 rounded border-gray-300 text-accent focus:ring-accent"
+                  />
+                  <span>{time}</span>
+                </label>
+              ))
+            }
+          </div>
+        </div>
+        <div>
+          <label for="notes" class="block text-sm font-medium mb-1"
+            >ملاحظات <span class="text-gray-400 text-xs">(اختياري)</span></label
+          >
+          <textarea
+            id="notes"
+            name="notes"
+            rows="3"
+            placeholder="أي تفاصيل إضافية..."
+            class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-transparent focus:ring-2 focus:ring-accent focus:border-accent outline-none transition resize-none text-sm sm:text-base"
+          ></textarea>
+        </div>
+        <button
+          type="submit"
+          class="w-full bg-accent hover:bg-accent-light text-white py-3 rounded-lg font-semibold transition-colors cursor-pointer text-sm sm:text-base"
+        >
+          إرسال الطلب
+        </button>
+        <p id="form-msg" class="text-center text-sm hidden"></p>
+      </form>
+
+      <aside class="flex flex-col gap-4 justify-center">
+        <a
+          href="https://wa.me/201032714001"
+          target="_blank"
+          rel="noopener"
+          class="flex items-center gap-3 bg-green-600 hover:bg-green-700 text-white px-5 sm:px-6 py-3 sm:py-4 rounded-xl font-medium transition-colors text-sm sm:text-base"
+        >
+          <svg
+            class="w-5 h-5 sm:w-6 sm:h-6 shrink-0"
+            fill="currentColor"
+            viewBox="0 0 24 24"
+            ><path
+              d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"
+            ></path><path
+              d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492l4.632-1.467A11.932 11.932 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818c-2.168 0-4.183-.591-5.925-1.618l-.424-.253-2.747.87.876-2.688-.278-.442A9.777 9.777 0 012.182 12c0-5.423 4.395-9.818 9.818-9.818S21.818 6.577 21.818 12s-4.395 9.818-9.818 9.818z"
+            ></path></svg
+          >
+          تواصل عبر واتساب
+        </a>
+        <a
+          href="mailto:miras.systems@gmail.com"
+          class="flex items-center gap-3 bg-primary hover:bg-primary-light text-white px-5 sm:px-6 py-3 sm:py-4 rounded-xl font-medium transition-colors text-sm sm:text-base"
+        >
+          <svg
+            class="w-5 h-5 sm:w-6 sm:h-6 shrink-0"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            ><path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+            ></path></svg
+          >
+          راسلنا عبر الإيميل
+        </a>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<script>
+  const form = document.getElementById("inspection-form") as HTMLFormElement;
+  const msg = document.getElementById("form-msg")!;
+
+  form?.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const data = new FormData(form);
+    const body = Object.fromEntries(data.entries());
+    body.preferred_time = data.getAll("preferred_time").join(", ");
+
+    try {
+      msg.textContent = "جاري الإرسال...";
+      msg.className = "text-center text-sm text-accent";
+
+      const res = await fetch("https://formspree.io/f/xyeglzyo", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body),
+      });
+
+      if (res.ok) {
+        msg.textContent = "تم إرسال طلبك بنجاح! سنتواصل معك قريباً.";
+        msg.className = "text-center text-sm text-green-600";
+        form.reset();
+      } else {
+        throw new Error();
+      }
+    } catch {
+      msg.textContent = "حدث خطأ، يرجى المحاولة مرة أخرى.";
+      msg.className = "text-center text-sm text-red-500";
+    }
+  });
+</script>

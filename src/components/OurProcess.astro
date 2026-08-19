@@ -1,0 +1,76 @@
+---
+const steps = [
+  {
+    num: "01",
+    title: "المعاينة المجانية",
+    desc: "يزور مهندسنا المتخصص موقعك لأخذ المقاسات الدقيقة، معاينة المكان، وفهم احتياجاتك وتفضيلاتك بشكل كامل — بدون أي تكلفة.",
+    img: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&q=80",
+  },
+  {
+    num: "02",
+    title: "التصميم والاختيار",
+    desc: "نعرض عليك كتالوج متنوع من التصاميم والخامات مع عينات حقيقية، ونساعدك في اختيار الأنسب لذوقك وميزانيتك مع تقديم عرض سعر تفصيلي.",
+    img: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=800&q=80",
+  },
+  {
+    num: "03",
+    title: "التصنيع",
+    desc: "يتم تصنيع منتجك في مصنعنا المجهز بأحدث ماكينات CNC والقطع بالليزر، مع رقابة جودة صارمة في كل مرحلة لضمان الدقة والمتانة.",
+    img: "https://images.unsplash.com/photo-1565793298595-6a879b1d9492?w=800&q=80",
+  },
+  {
+    num: "04",
+    title: "التركيب والتسليم",
+    desc: "فريق التركيب المحترف يتولى التثبيت والتشطيب النهائي مع ضمان شامل على المنتج والتركيب، ومتابعة ما بعد البيع لراحتك.",
+    img: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800&q=80",
+  },
+];
+---
+
+<section id="process" class="py-16 sm:py-20">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <h2
+      class="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-3 sm:mb-4"
+    >
+      خطواتنا
+    </h2>
+    <p
+      class="text-center text-gray-500 dark:text-gray-400 mb-10 sm:mb-14 text-sm sm:text-base"
+    >
+      من الفكرة إلى التنفيذ في خطوات واضحة
+    </p>
+
+    <div class="space-y-10 sm:space-y-16">
+      {
+        steps.map((step, i) => (
+          <article
+            class:list={[
+              "flex flex-col md:flex-row items-center gap-6 sm:gap-8",
+              i % 2 !== 0 && "md:flex-row-reverse",
+            ]}
+          >
+            <div class="w-full md:w-1/2">
+              <img
+                src={step.img}
+                alt={step.title}
+                loading="lazy"
+                class="w-full rounded-2xl aspect-video object-cover shadow-sm"
+              />
+            </div>
+            <div class="w-full md:w-1/2 text-center md:text-start">
+              <span class="text-4xl sm:text-5xl font-black text-accent/20">
+                {step.num}
+              </span>
+              <h3 class="text-xl sm:text-2xl font-bold mt-2 mb-2 sm:mb-3">
+                {step.title}
+              </h3>
+              <p class="text-gray-600 dark:text-gray-300 leading-relaxed text-base sm:text-lg">
+                {step.desc}
+              </p>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>

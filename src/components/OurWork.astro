@@ -1,0 +1,374 @@
+---
+const categories = [
+  "الكل",
+  "أبواب خشبية",
+  "أبواب ألومنيوم",
+  "شبابيك",
+  "واجهات زجاجية",
+  "أعمال حديد",
+  "فيديو",
+];
+const works: {
+  src: string;
+  title: string;
+  category: string;
+  type: "image" | "video";
+  poster?: string;
+}[] = [
+  {
+    src: "https://images.unsplash.com/photo-1604871000636-074fa5117945?w=600&q=80",
+    title: "شبابيك سلايدنج - شقة سكنية المعادي",
+    category: "شبابيك",
+    type: "image",
+  },
+  {
+    src: "/videos/hero.mp4",
+    title: "جولة داخل مصنع ميراس",
+    category: "فيديو",
+    type: "video",
+    poster: "/videos/poster-frame.jpg",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=80",
+    title: "واجهة زجاجية كاملة - مبنى تجاري",
+    category: "واجهات زجاجية",
+    type: "image",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1506377295352-e3154d43ea9e?w=600&q=80",
+    title: "باب خشب ماسيف بزخرفة - قصر",
+    category: "أبواب خشبية",
+    type: "image",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1600585152220-90363fe7e115?w=600&q=80",
+    title: "شبابيك مقوسة بإطار ألومنيوم",
+    category: "أعمال حديد",
+    type: "image",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&q=80",
+    title: "أبواب ألومنيوم بتصميم عصري - فندق",
+    category: "أبواب ألومنيوم",
+    type: "image",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=600&q=80",
+    title: "واجهة كيرتن وول - برج سكني",
+    category: "واجهات زجاجية",
+    type: "image",
+  },
+];
+---
+
+<section id="work" class="py-16 sm:py-20">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <h2
+      class="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-3 sm:mb-4"
+    >
+      أعمالنا
+    </h2>
+    <p
+      class="text-center text-gray-500 dark:text-gray-400 mb-8 sm:mb-10 text-sm sm:text-base"
+    >
+      اكتشف مجموعة من أبرز مشاريعنا
+    </p>
+
+    <div
+      class="flex flex-wrap justify-center gap-2 sm:gap-3 mb-8 sm:mb-10 px-2"
+      id="filter-btns"
+      role="tablist"
+    >
+      {
+        categories.map((cat, i) => (
+          <button
+            role="tab"
+            aria-selected={i === 0 ? "true" : "false"}
+            data-filter={cat}
+            class:list={[
+              "px-4 sm:px-5 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-medium transition-all cursor-pointer",
+              i === 0
+                ? "bg-accent text-white"
+                : "bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-accent/10",
+            ]}
+          >
+            {cat}
+          </button>
+        ))
+      }
+    </div>
+
+    <div
+      id="work-grid"
+      class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6"
+    >
+      {
+        works.map((item) => (
+          <figure
+            data-category={item.category}
+            data-type={item.type}
+            data-src={item.src}
+            data-title={item.title}
+            data-poster={item.poster || ""}
+            class="work-item group relative rounded-2xl overflow-hidden aspect-[4/3] bg-gray-200 dark:bg-gray-800 transition-all duration-500 cursor-pointer"
+          >
+            {item.type === "image" ? (
+              <img
+                src={item.src}
+                alt={item.title}
+                loading="lazy"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+            ) : (
+              <div class="relative w-full h-full">
+                <video
+                  src={item.src}
+                  muted
+                  loop
+                  playsinline
+                  poster={item.poster}
+                  preload="metadata"
+                  class="w-full h-full object-cover"
+                  onmouseenter="this.play()"
+                  onmouseleave="this.pause()"
+                />
+                <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+                  <span class="w-14 h-14 sm:w-16 sm:h-16 bg-white/90 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+                    <svg
+                      class="w-6 h-6 sm:w-7 sm:h-7 text-accent ms-1"
+                      fill="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path d="M8 5v14l11-7z" />
+                    </svg>
+                  </span>
+                </div>
+              </div>
+            )}
+            <figcaption class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/70 to-transparent p-4 text-white text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              {item.title}
+            </figcaption>
+          </figure>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<!-- Media Popup -->
+<div
+  id="media-popup"
+  class="fixed inset-0 z-[100] flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300"
+  role="dialog"
+  aria-modal="true"
+  aria-label="عرض المحتوى"
+>
+  <div id="popup-backdrop" class="absolute inset-0 bg-black/80"></div>
+  <button
+    id="popup-close"
+    aria-label="إغلاق"
+    class="fixed top-4 start-4 z-20 text-white hover:text-accent transition-colors cursor-pointer bg-black/40 hover:bg-black/60 rounded-full p-2"
+  >
+    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+      ><path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M6 18L18 6M6 6l12 12"></path></svg
+    >
+  </button>
+  <div
+    id="popup-content"
+    class="relative z-10 w-[90vw] max-w-4xl scale-90 transition-transform duration-300"
+  >
+    <button
+      id="popup-prev"
+      aria-label="السابق"
+      class="absolute top-1/2 -translate-y-1/2 -start-12 sm:-start-14 text-white hover:text-accent transition-colors cursor-pointer"
+    >
+      <svg
+        class="w-10 h-10"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+        ><path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M9 5l7 7-7 7"></path></svg
+      >
+    </button>
+    <button
+      id="popup-next"
+      aria-label="التالي"
+      class="absolute top-1/2 -translate-y-1/2 -end-12 sm:-end-14 text-white hover:text-accent transition-colors cursor-pointer"
+    >
+      <svg
+        class="w-10 h-10"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+        ><path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M15 19l-7-7 7-7"></path></svg
+      >
+    </button>
+
+    <div id="popup-media" class="transition-opacity duration-200"></div>
+    <p
+      id="popup-title"
+      class="text-white text-center mt-3 text-sm sm:text-base font-medium"
+    >
+    </p>
+    <p id="popup-counter" class="text-white/50 text-center text-xs mt-1"></p>
+  </div>
+</div>
+
+<script>
+  const btns = document.querySelectorAll<HTMLButtonElement>(
+    "#filter-btns button",
+  );
+  const items = document.querySelectorAll<HTMLElement>(".work-item");
+
+  btns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      btns.forEach((b) => {
+        b.classList.remove("bg-accent", "text-white");
+        b.classList.add(
+          "bg-gray-100",
+          "dark:bg-gray-800",
+          "text-gray-700",
+          "dark:text-gray-300",
+        );
+        b.setAttribute("aria-selected", "false");
+      });
+      btn.classList.add("bg-accent", "text-white");
+      btn.classList.remove(
+        "bg-gray-100",
+        "dark:bg-gray-800",
+        "text-gray-700",
+        "dark:text-gray-300",
+      );
+      btn.setAttribute("aria-selected", "true");
+
+      const filter = btn.dataset.filter;
+      items.forEach((item) => {
+        const match = filter === "الكل" || item.dataset.category === filter;
+        item.style.display = match ? "" : "none";
+        if (match) {
+          item.style.opacity = "0";
+          item.style.transform = "scale(0.95)";
+          requestAnimationFrame(() => {
+            item.style.transition = "opacity 0.4s, transform 0.4s";
+            item.style.opacity = "1";
+            item.style.transform = "scale(1)";
+          });
+        }
+      });
+    });
+  });
+
+  // Media popup with navigation
+  const popup = document.getElementById("media-popup")!;
+  const popupMedia = document.getElementById("popup-media")!;
+  const popupTitle = document.getElementById("popup-title")!;
+  const popupCounter = document.getElementById("popup-counter")!;
+  const popupContent = document.getElementById("popup-content")!;
+
+  let visibleItems: HTMLElement[] = [];
+  let currentIndex = 0;
+
+  function getVisibleItems() {
+    return Array.from(items).filter((el) => el.style.display !== "none");
+  }
+
+  function renderMedia(item: HTMLElement) {
+    const vid = popupMedia.querySelector("video");
+    if (vid) vid.pause();
+
+    popupMedia.style.opacity = "0";
+    setTimeout(() => {
+      popupMedia.innerHTML = "";
+      const type = item.dataset.type!;
+      const src = item.dataset.src!;
+      const title = item.dataset.title!;
+
+      if (type === "video") {
+        const v = document.createElement("video");
+        v.src = src;
+        v.controls = true;
+        v.playsInline = true;
+        v.className = "w-full rounded-2xl shadow-2xl bg-black aspect-video";
+        popupMedia.appendChild(v);
+        v.play();
+      } else {
+        const img = document.createElement("img");
+        img.src = src.replace("w=600", "w=1200");
+        img.alt = title;
+        img.className =
+          "w-full rounded-2xl shadow-2xl bg-black max-h-[80vh] object-contain";
+        popupMedia.appendChild(img);
+      }
+      popupTitle.textContent = title;
+      popupCounter.textContent = `${currentIndex + 1} / ${visibleItems.length}`;
+      popupMedia.style.opacity = "1";
+    }, 150);
+  }
+
+  function openPopup(index: number) {
+    visibleItems = getVisibleItems();
+    currentIndex = index;
+    renderMedia(visibleItems[currentIndex]);
+    popup.classList.remove("pointer-events-none", "opacity-0");
+    popup.classList.add("opacity-100");
+    popupContent.classList.remove("scale-90");
+    popupContent.classList.add("scale-100");
+    document.body.style.overflow = "hidden";
+  }
+
+  function navigate(dir: number) {
+    currentIndex =
+      (currentIndex + dir + visibleItems.length) % visibleItems.length;
+    renderMedia(visibleItems[currentIndex]);
+  }
+
+  function closePopup() {
+    popup.classList.add("opacity-0");
+    popup.classList.remove("opacity-100");
+    popupContent.classList.add("scale-90");
+    popupContent.classList.remove("scale-100");
+    document.body.style.overflow = "";
+    const vid = popupMedia.querySelector("video");
+    if (vid) vid.pause();
+    setTimeout(() => {
+      popup.classList.add("pointer-events-none");
+      popupMedia.innerHTML = "";
+    }, 300);
+  }
+
+  items.forEach((item) => {
+    item.addEventListener("click", () => {
+      const vis = getVisibleItems();
+      openPopup(vis.indexOf(item));
+    });
+  });
+
+  document
+    .getElementById("popup-prev")!
+    .addEventListener("click", () => navigate(-1));
+  document
+    .getElementById("popup-next")!
+    .addEventListener("click", () => navigate(1));
+  document.getElementById("popup-close")!.addEventListener("click", closePopup);
+  document
+    .getElementById("popup-backdrop")!
+    .addEventListener("click", closePopup);
+  document.addEventListener("keydown", (e) => {
+    if (popup.classList.contains("pointer-events-none")) return;
+    if (e.key === "Escape") closePopup();
+    if (e.key === "ArrowRight") navigate(-1);
+    if (e.key === "ArrowLeft") navigate(1);
+  });
+</script>

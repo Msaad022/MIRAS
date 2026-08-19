@@ -1,0 +1,47 @@
+---
+const items = [
+  {
+    title: "ماذا نفعل",
+    desc: "نصمم ونصنع أبواب وشبابيك من الألومنيوم والخشب الطبيعي والحديد المشغول، بالإضافة إلى الواجهات الزجاجية (كيرتن وول) وأنظمة السلايدنج والأكورديون للمشاريع السكنية والتجارية.",
+    icon: "🏗️",
+  },
+  {
+    title: "كيف نفعل ذلك",
+    desc: "نعتمد على مصنع مجهز بماكينات CNC وقطع ليزر دقيقة، مع فريق من المهندسين والحرفيين بخبرة تزيد عن ١٥ عام. نستورد خاماتنا من أفضل الموردين العالميين مع رقابة جودة في كل مرحلة.",
+    icon: "⚙️",
+  },
+  {
+    title: "لماذا نفعل ذلك",
+    desc: "لأن كل مساحة تستحق تشطيب يليق بها. هدفنا أن نكون الاختيار الأول في مصر لصناعة الأبواب والشبابيك، من خلال الجودة والالتزام بالمواعيد وخدمة ما بعد البيع.",
+    icon: "💎",
+  },
+];
+---
+
+<section id="vision" class="py-16 sm:py-20 bg-gray-50 dark:bg-gray-900">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <h2
+      class="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-3 sm:mb-4"
+    >
+      رؤيتنا وقيمنا
+    </h2>
+    <p
+      class="text-center text-gray-500 dark:text-gray-400 mb-10 sm:mb-12 max-w-2xl mx-auto text-sm sm:text-base"
+    >
+      نسعى لتقديم أفضل المنتجات بأعلى معايير الجودة
+    </p>
+    <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
+      {
+        items.map((item) => (
+          <article class="bg-white dark:bg-gray-800 rounded-2xl p-6 sm:p-8 text-center shadow-sm hover:shadow-md transition-shadow">
+            <div class="text-4xl sm:text-5xl mb-4">{item.icon}</div>
+            <h3 class="text-lg sm:text-xl font-bold mb-3">{item.title}</h3>
+            <p class="text-gray-600 dark:text-gray-300 leading-relaxed text-sm sm:text-base">
+              {item.desc}
+            </p>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
