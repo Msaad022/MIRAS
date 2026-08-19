@@ -5,9 +5,9 @@ import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
+  site: 'https://Msaad022.github.io',
+  base: '/MIRAS',
   vite: {
     plugins: [tailwindcss()],
-    site: 'https://Msaad022.github.io',
-    base: '/MIRAS',
   }
 });
